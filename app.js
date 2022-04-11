@@ -1,68 +1,88 @@
-function askName() {
-    var name = prompt("enter your name")
-    return name
+let userNum = document.getElementById("getNumber")
+userNum.addEventListener("keydown", function (e) {
+   if(e.keyCode == 13) {
+       run(e)
+   }
+})
+ 
+userNum.focus();
+ 
+let counter = 0;
+ 
+function run() {
+//    document.getElementById("paragraph").innerHTML = "Hello World!";
+//    document.getElementById("paragraph").style.backgroundColor = "green";
+//    document.getElementById("paragraph").style.color = "white";
+//    document.getElementById("paragraph").style.padding = "20px";
+   randomNum();
+   userNumber();
+   compareNumbers();
+ 
+}  
+ 
+function randomNum() {
+   let ran = Math.floor(Math.random() * 10);
+//    let x = document.getElementById("random")
+//    x.innerHTML = ran;
+//    x.style.backgroundColor = "#280cc1";
+//    x.style.color = "white";
+//    x.style.padding = "20px";
+//    x.style.textAlign = "center";
+   return ran;
 }
-
-function greeting(a) {
-    alert(`Welcome back, ${a}.`)
+ 
+function userNumber() {
+   let user = document.getElementById("getNumber").value;
+//    let y = document.getElementById("userNumber");
+//    y.innerHTML = user;
+//    y.style.color = "white";
+//    y.style.backgroundColor = "orange";
+//    y.style.padding = "20px";
+//    y.style.textAlign = "center";
+   return user;
+}
+ 
+function compareNumbers() {
+   let a = userNumber();
+   let b = randomNum();
+   let z = document.getElementById("compare");
+   let c = document.getElementById("counter");
+   if (a != b) {
+       z.innerHTML = "Numbers are not the same. Computer got" + b + ", and user got" + a;
+       z.style.color = "white";
+       z.style.backgroundColor = "orange";
+       z.style.padding = "20px";
+       z.style.textAlign = "center";
+       counter++;
+       c.innerHTML = "you have tried" + counter + "timees."
+       c.style.color = "white";
+       c.style.backgroundColor = "grey";
+       c.style.padding = "20px";
+       c.style.textAlign = "center";
+       document.querySelector("body").style.backgroundColor = 
+       "brown"
+   } else if (a == b) {
+       z.innerHTML = "Numbers are not the same. Computer got" + b + ", and user got" + a;
+       z.style.color = "purple";
+       z.style.backgroundColor = "green";
+       z.style.padding = "20px";
+       z.style.textAlign = "center";
+       c.innerHTML = "you have tried" + counter + "timees to get it right."
+       c.style.color = "white";
+       c.style.backgroundColor = "grey";
+       c.style.padding = "20px";
+       c.style.textAlign = "center";
+        counter = 0;
+        document.querySelector("body").style.backgroundColor = 
+       "purple"
     
-}
-
-greeting(askName())
-function cumpgame() {
-
-    var computerNumber = 0;
-    do{    
-        var randomNumber = Math.floor(Math.random()* 10) + 1;
-        computerNumber /* 8 */ = computerNumber /* 3 */ + randomNumber // 5
-        //alert(computerNumber)      
-        alert(`Computer picked up a ${randomNumber}, player total ${computerNumber}  `);
-    } while  ( computerNumber < 16 );
-    alert(`exit`)
-    alert(`user's turn`)
-   
-}
-
-function usgame() {
-
-        var usersNumber = 0;
-    do{
-        var randomNumber = Math.floor(Math.random()* 10) + 1;
-        usersNumber  = usersNumber  + randomNumber 
-        //alert(usersNumber)
-        alert(`Player picked up a ${randomNumber}, player total ${usersNumber}  `)
-        if (usersNumber >= 20) {
-            break
-        }  
-        var useresponds = prompt("do you want to keep playing?")
-
-    } while  (( usersNumber < 21 ) && (useresponds == "y"))
-
-}
-
-function thegame() {
-
-    if((computerNumber > usersNumber) && (computerNumber <= 20) && (usersNumber <=20)) {
-
-    alert("The computer has won the game")
-
-        }else if (usersNumber > computerNumber) {
-
-    alert("user has won")
     }
-    do{
-        round++
-        alert(`round ${round}`)
-        var nextmatch = prompt("do you want to countine the game y or n")
-        var round = (1)
-     }while(nextmatch == "y");
 
-}     
-
-cumpgame()
-
-usgame()
-
-thegame(usgame(), cumpgame())
-
-
+ 
+   resetInput();
+}
+ 
+function resetInput() {
+   document.getElementById("getNumber").value = "";
+}
+ 
